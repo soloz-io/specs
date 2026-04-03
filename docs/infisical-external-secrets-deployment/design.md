@@ -327,7 +327,7 @@ func (i *Installer) FixArgoCDGitHubAuth(ctx context.Context, githubToken string)
     secretYAML := fmt.Sprintf(`apiVersion: v1
 kind: Secret
 metadata:
-  name: repo-soloz-io-zero-ops
+  name: hub-platform-git-secret
   namespace: argocd
   labels:
     argocd.argoproj.io/secret-type: repository
@@ -364,7 +364,7 @@ spec:
     kind: ClusterSecretStore
   
   target:
-    name: repo-soloz-io-zero-ops
+    name: hub-platform-git-secret
     creationPolicy: Owner
     template:
       metadata:

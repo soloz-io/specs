@@ -224,7 +224,7 @@ CSRF_COOKIE_SECRET=<from secret kratos-ui-secrets>
 | `identity-postgres-passwords` | `zero-ops-system` | CNPG DB passwords |
 | `kratos-ui-secrets` | `ory-system` | cookie/CSRF secrets |
 | `ghcr-pull-secret` | `identity-services` | GHCR image pull |
-| `repo-soloz-io-zero-ops` | `argocd` | GitHub repo access |
+| `hub-platform-git-secret` | `argocd` | GitHub repo access |
 
 **Post-secret actions:** Waits for all ArgoCD apps `Synced/Healthy` and all 3 TLS certs `Ready: True` before exiting.
 

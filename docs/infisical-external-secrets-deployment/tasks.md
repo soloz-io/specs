@@ -16,7 +16,7 @@ This implementation follows GitOps-first principles with ArgoCD sync-wave orderi
 
   - [x] 0.2 Add FixArgoCDGitHubAuth method to installer.go
     - Method signature: `FixArgoCDGitHubAuth(ctx context.Context, githubToken string) error`
-    - Create `repo-soloz-io-zero-ops` secret in `argocd` namespace
+    - Create `hub-platform-git-secret` secret in `argocd` namespace
     - Add label: `argocd.argoproj.io/secret-type: repository`
     - Include fields: `type: git`, `url`, `username`, `password`
     - Use client-go kubernetes clientset (PRODUCTION READY)
@@ -145,7 +145,7 @@ This implementation follows GitOps-first principles with ArgoCD sync-wave orderi
     - Name: argocd-github-creds
     - Reference ClusterSecretStore "infisical-backend"
     - Fetch github-username and github-token from Infisical
-    - Create target secret: repo-soloz-io-zero-ops (replaces bootstrap secret)
+    - Create target secret: hub-platform-git-secret (replaces bootstrap secret)
     - Add label: `argocd.argoproj.io/secret-type: repository`
     - Include template fields: `type: git`, `url`, `username`, `password`
     - Set refresh interval to 1h
