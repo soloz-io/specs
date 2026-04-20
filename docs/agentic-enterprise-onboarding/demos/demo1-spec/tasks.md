@@ -27,7 +27,7 @@ This implementation plan creates the OAuth 2.1 Authorization Code Flow with PKCE
   - ✅ Configure identity schema for Kratos with email, tenant_id, and role traits
   - ⚠️ Set up database connectivity and verify all Ory services are healthy (DEFERRED - requires E2E tests from Task 2+)
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
-  - **Status:** Manifests created in `manifests/platform-identity/`. Cannot validate Ory stack health without auth-proxy, AgentGateway, and Ingress (Tasks 2, 5, 6).
+  - **Status:** Manifests created in `manifests/hub-core-services/platform-identity/`. Cannot validate Ory stack health without auth-proxy, AgentGateway, and Ingress (Tasks 2, 5, 6).
   - **Known Issues:** Helm chart version needs update to v25.4.0, health probes need explicit configuration
   - **Deliverables:** 25 files (CNPG cluster, Database CRDs, Ory Helm values, Kratos schema, ArgoCD apps, bootstrap scripts)
 
@@ -122,18 +122,18 @@ This implementation plan creates the OAuth 2.1 Authorization Code Flow with PKCE
   - ✅ Test browser redirect flows and callback URL handling
   - _Requirements: 2.1, 2.4_
   - **Status:** Ingress, TLS, and Kratos UI deployed with local dev support (mkcert)
-  - **Files:** manifests/ingress/{ingress,cluster-issuer,dev-certificates,kustomization}.yaml, manifests/platform-identity/kratos-ui/deployment.yaml
+  - **Files:** manifests/ingress/{ingress,cluster-issuer,dev-certificates,kustomization}.yaml, manifests/hub-core-services/platform-identity/kratos-ui/deployment.yaml
   - **Scripts:** manifests/ingress/{generate-local-certs.sh,setup-local-dns.sh}
 
 - [x] 7. Create deployment manifests and secrets management ✅ COMPLETE
-  - ✅ Create Kubernetes manifests for all components in manifests/platform-identity/
+  - ✅ Create Kubernetes manifests for all components in manifests/hub-core-services/platform-identity/
   - ✅ Generate database passwords and create identity-postgres-passwords Secret
   - ✅ Configure Helm values for Ory services with proper database connections
   - ✅ Set up proper RBAC and network policies for service isolation
   - ✅ Create ArgoCD applications for automated deployment
   - _Requirements: 2.2, 2.3_
   - **Status:** All deployment manifests, RBAC, NetworkPolicies, and master deployment script created
-  - **Files:** manifests/platform-identity/{network-policies,auth-proxy/rbac}.yaml, deploy-demo1.sh
+  - **Files:** manifests/hub-core-services/platform-identity/{network-policies,auth-proxy/rbac}.yaml, deploy-demo1.sh
 
 - [x] 8. Implement startup ordering and health checks ✅ COMPLETE
   - ✅ Add initContainers to wait for CNPG cluster readiness

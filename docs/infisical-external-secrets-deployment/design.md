@@ -467,7 +467,7 @@ spec:
   source:
     repoURL: https://github.com/soloz-io/zero-ops
     targetRevision: HEAD
-    path: manifests/platform-infisical
+    path: manifests/hub-core-services/platform-infisical
     directory:
       recurse: true
   destination:
@@ -664,7 +664,7 @@ These methods are called once during platform bootstrap to enable the declarativ
 
 After bootstrap, all secrets are managed declaratively via Git:
 
-**manifests/platform-infisical/postgres-connection-secret.yaml:**
+**manifests/hub-core-services/platform-infisical/postgres-connection-secret.yaml:**
 ```yaml
 apiVersion: v1
 kind: Secret

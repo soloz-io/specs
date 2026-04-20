@@ -52,9 +52,9 @@ This implementation follows a phased approach with manual testing gates between 
   - [x] 1.5.3 Implement ListAgentDeployments (query agent_infra_status by tenant_id)
 
 **Manual Testing Checkpoint:**
-- Apply `manifests/platform-database/platform-db.yaml` → verify CNPG cluster Ready
-- Apply `manifests/platform-database/migrations/control-plane-migrations.yaml` → verify Job completes
-- Apply `manifests/platform-database/migrations/hub-migrations.yaml` → verify Job completes
+- Apply `manifests/hub-core-services/platform-database/platform-db.yaml` → verify CNPG cluster Ready
+- Apply `manifests/hub-core-services/platform-database/migrations/control-plane-migrations.yaml` → verify Job completes
+- Apply `manifests/hub-core-services/platform-database/migrations/hub-migrations.yaml` → verify Job completes
 - Test AgentRegistry client against local AgentRegistry instance
 - Test Hub PostgREST client against Hub Centralised DB
 

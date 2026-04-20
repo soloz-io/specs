@@ -241,8 +241,8 @@ manifests/argocd/
     ingress-config.yaml
     ingress-nginx.yaml
     network-policies.yaml
-    platform-identity.yaml      # points to manifests/platform-identity/argocd/
-manifests/platform-identity/argocd/
+    platform-identity.yaml      # points to manifests/hub-core-services/platform-identity/argocd/
+manifests/hub-core-services/platform-identity/argocd/
   app-of-apps.yaml
   ory-hydra.yaml, ory-kratos.yaml, ory-keto.yaml
   identity-postgres.yaml, auth-proxy.yaml, kratos-ui.yaml, demo-echo.yaml
@@ -943,11 +943,11 @@ client_id=mcp-public-client
 
 ### Deployment Structure
 
-**Manifests Location:** `manifests/platform-identity/`
+**Manifests Location:** `manifests/hub-core-services/platform-identity/`
 
 **Structure:**
 ```
-manifests/platform-identity/
+manifests/hub-core-services/platform-identity/
   cnpg-cluster.yaml          # CNPG Cluster CR
   databases/
     hydra-db.yaml            # Database CRD
@@ -1002,7 +1002,7 @@ For Demo 1, PKCE flows require HTTPS termination. The following Ingress resource
 3. `ory-keto` - Helm chart from `ory/keto`
 4. `kratos-selfservice-ui-node` - Deployment from `oryd/kratos-selfservice-ui-node`
 5. `identity-postgres` - CNPG Cluster CR
-6. `auth-proxy` - Kustomize from `manifests/platform-identity/auth-proxy/`
+6. `auth-proxy` - Kustomize from `manifests/hub-core-services/platform-identity/auth-proxy/`
 7. `agentgateway` - External Helm chart or Kustomize
 
 **Startup Ordering (G-10 Resolution):**
@@ -1231,7 +1231,7 @@ data:
 ### Phase 2: Services & Seed Data (Day 1 Afternoon)
 1. Build and deploy auth-proxy (`cmd/auth-proxy/`). Deployment MUST include an `initContainer` that waits for `http://ory-hydra-public.ory-system.svc.cluster.local:4444/health/ready` before starting the auth-proxy binary.
 2. Verify auth-proxy pod reaches `Ready` state (confirms client pre-registration and JWKS fetch)
-3. Deploy demo-echo service (`manifests/platform-identity/demo-echo/`)
+3. Deploy demo-echo service (`manifests/hub-core-services/platform-identity/demo-echo/`)
 4. Deploy AgentGateway
 5. Verify OAuth metadata endpoints
 6. Seed demo user via Kratos Admin API:

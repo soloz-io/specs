@@ -57,7 +57,7 @@ This implementation follows GitOps-first principles with ArgoCD sync-wave orderi
     - Set sync-wave annotation to "3"
     - Configure automated sync with prune and selfHeal
     - Set retry policy (duration: 30s, maxDuration: 10m, limit: 15)
-    - Point to `manifests/platform-infisical` directory
+    - Point to `manifests/hub-core-services/platform-infisical` directory
     - Target namespace: zero-ops-system
     - _Requirements: 5.1, 5.2, 5.4, 5.5, 5.6_
 
@@ -90,14 +90,14 @@ This implementation follows GitOps-first principles with ArgoCD sync-wave orderi
 
 - [x] 2. Create Infisical deployment manifests
   - [x] 2.1 Create Infisical namespace and PostgreSQL connection secret
-    - Create `manifests/platform-infisical/namespace.yaml` for zero-ops-system
-    - Create `manifests/platform-infisical/postgres-connection-secret.yaml`
+    - Create `manifests/hub-core-services/platform-infisical/namespace.yaml` for zero-ops-system
+    - Create `manifests/hub-core-services/platform-infisical/postgres-connection-secret.yaml`
     - Secret should reference CloudNativePG connection string
     - Use placeholder for password (to be replaced via KSOPS/Age)
     - _Requirements: 1.2, 1.3_
 
   - [x] 2.2 Create Infisical Helm values configuration
-    - Create `manifests/platform-infisical/values.yaml`
+    - Create `manifests/hub-core-services/platform-infisical/values.yaml`
     - Set chart version to v1.7.5
     - Disable built-in PostgreSQL (postgresql.enabled: false)
     - Disable built-in Redis (redis.enabled: false)
@@ -107,9 +107,9 @@ This implementation follows GitOps-first principles with ArgoCD sync-wave orderi
     - _Requirements: 1.1, 1.3, 1.6_
 
   - [x] 2.3 Create Infisical HelmRelease and ingress
-    - Create `manifests/platform-infisical/helm-release.yaml`
+    - Create `manifests/hub-core-services/platform-infisical/helm-release.yaml`
     - Reference Helm chart from archived/references/identity-auth/infisical/helm-charts/infisical-standalone-postgres
-    - Create `manifests/platform-infisical/ingress.yaml`
+    - Create `manifests/hub-core-services/platform-infisical/ingress.yaml`
     - Configure HTTPS ingress with cert-manager annotation
     - Set hostname to infisical.zero-ops.local
     - _Requirements: 1.1, 1.4, 1.5_
